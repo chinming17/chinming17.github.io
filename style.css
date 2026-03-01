@@ -591,8 +591,12 @@ body.dark-theme .skill-item:hover {
     .navbar { padding: 1rem 5%; }
     .hero-container { flex-direction: column; text-align: center; gap: 3rem; padding-top: 120px; }
     
-    .main-headline {      font-size: 2.2rem; /* 稍微縮小字號以適應 iPad 寬度 */     line-height: 1.4;      width: 95%;      margin: 0 auto 1.5rem; /* 置中並微調底部間距 */ }
-    /* 針對平板裝置縮減階梯式的縮進距離 */
+    .main-headline { 
+        font-size: 2.2rem; 
+        line-height: 1.1; /* 將行高從 1.4 縮小到 1.1，讓三行文字大幅拉近 */
+        width: 95%;
+        margin: 0 auto 1.5rem;
+    }
     .main-headline .line-1 { padding-left: 2%; }
     .main-headline .line-3 { padding-right: 2%; }
     
