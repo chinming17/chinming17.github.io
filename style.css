@@ -90,36 +90,44 @@ body::before {
     z-index: 9999;
 }
 
-/* --- 上方膠囊導覽列 (放慢過渡動畫) --- */
+/* --- 上方膠囊導覽列 (動畫絲滑優化版) --- */
 .navbar {
     display: flex; 
     justify-content: space-between; 
     align-items: center;
     padding: 0.8rem 2rem; 
-    margin: 20px auto 0;
+    border-radius: 50px;
+    
+    /* 1. 棄用會卡頓的 margin: auto，改用 transform 達成絕對置中 */
+    position: fixed;
+    top: 20px; 
+    left: 50%;
+    transform: translateX(-50%);
     width: 90%;
     max-width: 1200px;
-    border-radius: 50px;
+    margin: 0; 
     
     background: rgba(255, 255, 255, 0.75); 
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.6);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
-    
-    position: fixed;
-    top: 0; left: 0; right: 0;
     z-index: 1000;
-    transition: max-width 1s cubic-bezier(0.25, 1, 0.3, 1), 
-                padding 0.8s ease, 
-                margin 1s cubic-bezier(0.25, 1, 0.3, 1), 
-                background 0.5s;
+    
+    /* 2. 採用 Material Design 標準貝茲曲線，讓加減速極度自然 */
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .navbar.shrunk {
-    max-width: max-content;
-    margin: 20px 20px 0 auto;
-    padding: 0.6rem 1.2rem;
+    /* 3. 給予精確的縮小寬度，取代會導致跳格的 max-content */
+    width: 130px; 
+    max-width: 130px; 
+    padding: 0.6rem 1rem;
+    
+    /* 4. 平滑且精確地將導覽列滑動到螢幕右上角 */
+    left: calc(100% - 20px);
+    transform: translateX(-100%);
+    
     background: rgba(255, 255, 255, 0.9);
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
@@ -134,18 +142,18 @@ body::before {
     opacity: 1;
     overflow: hidden;
     white-space: nowrap;
-    transition: max-width 1s cubic-bezier(0.25, 1, 0.3, 1), 
-                opacity 0.7s ease, 
-                margin 0.7s ease,
-                font-size 0.5s;
     color: #e69c00; 
     text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3); 
+    
+    /* 與父容器保持完全一致的動畫時間與曲線 */
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .navbar.shrunk .logo {
     max-width: 0;
     opacity: 0;
     margin: 0;
+    padding: 0; /* 確保收縮時不佔據任何空間 */
 }
 
 body.dark-theme .navbar {
