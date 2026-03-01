@@ -597,29 +597,34 @@ body.dark-theme .skill-item:hover {
     .navbar { padding: 1rem 5%; }
     .hero-container { flex-direction: column; text-align: center; gap: 3rem; padding-top: 120px; }
     
-    /* --- 增強版：強制壓扁平板端標題行距 --- */
+    /* --- 平板端標題排版：精準控制三行距離 --- */
     .main-headline { 
         font-size: 2.2rem; 
         width: 95%;
         margin: 0 auto 1.5rem;
+        
+        /* 啟用 Flex 排版來絕對控制子元素的距離 */
+        display: flex; 
+        flex-direction: column; 
+        gap: 0.2rem; /* 💡 這是三行字之間的精準距離，您可以改成 0.5rem 或 0 試試看 */
     }
     
-    /* 直接針對每一行文字強制設定行高，確保不會被其他設定干擾 */
+    /* 殺手鐧：隱藏可能造成額外空行的 <br> 標籤 */
+    .main-headline br {
+        display: none !important;
+    }
+
+    /* 確保每一行乾淨俐落 */
     .main-headline span[class^="line-"] {
+        display: block !important;
         line-height: 1.1 !important; 
+        margin: 0 !important;
+        padding: 0 !important;
     }
 
     /* 針對平板裝置縮減階梯式的縮進距離 */
     .main-headline .line-1 { padding-left: 2%; }
     .main-headline .line-3 { padding-right: 2%; }
-    
-    .content-area { width: 100%; align-items: center; }
-    .bio-text { 
-        text-align: justify; 
-        text-justify: inter-ideograph;
-        width: 100%;
-        padding: 0 10px; 
-    }
     
     .cta-group { flex-direction: column; align-items: center; width: 100%; gap: 1rem; }
     .btn { width: 100%; max-width: 280px; }
