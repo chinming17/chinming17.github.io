@@ -591,12 +591,19 @@ body.dark-theme .skill-item:hover {
     .navbar { padding: 1rem 5%; }
     .hero-container { flex-direction: column; text-align: center; gap: 3rem; padding-top: 120px; }
     
+    /* --- 增強版：強制壓扁平板端標題行距 --- */
     .main-headline { 
         font-size: 2.2rem; 
-        line-height: 1.1; /* 將行高從 1.4 縮小到 1.1，讓三行文字大幅拉近 */
         width: 95%;
         margin: 0 auto 1.5rem;
     }
+    
+    /* 直接針對每一行文字強制設定行高，確保不會被其他設定干擾 */
+    .main-headline span[class^="line-"] {
+        line-height: 1.1 !important; 
+    }
+
+    /* 針對平板裝置縮減階梯式的縮進距離 */
     .main-headline .line-1 { padding-left: 2%; }
     .main-headline .line-3 { padding-right: 2%; }
     
