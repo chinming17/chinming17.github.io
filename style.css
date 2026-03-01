@@ -410,9 +410,15 @@ body.dark-theme .dropdown-btn:hover { background: var(--primary); color: var(--b
     display: block;
 }
 
-.main-headline span[class^="line-"] {
-    display: block;
-}
+/* 終極壓扁設定：強制抹除任何隱形外邊距與上下內邊距 */
+    .main-headline span[class^="line-"] {
+        display: block !important;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        line-height: 1.1 !important; 
+    }
 
 /* 全域適用：中、日、英 階梯式對齊 (左、中、右) */
 .main-headline .line-1 { text-align: left; padding-left: 5%; }
