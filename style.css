@@ -592,6 +592,50 @@ body.dark-theme .skill-item:hover {
 .btn .lang-content.jp { font-family: 'Noto Sans JP', 'Inter', sans-serif; font-weight: 700; }
 .btn .lang-content.en { font-family: 'Inter', sans-serif; font-weight: 700; }
 
+/* --- 電腦端：聯絡圖示懸浮變色與上浮特效 --- */
+.icon-link {
+    display: inline-block; /* 確保上浮動畫能正確觸發 */
+    transition: all 0.3s ease !important;
+}
+
+/* 針對 SVG 內部路徑的平滑過渡 */
+.icon-link svg path {
+    transition: fill 0.3s ease !important;
+}
+
+/* 滑鼠懸浮時的變色(橘金色)與微幅上浮設定 */
+.icon-link:hover {
+    color: #e69c00 !important; 
+    transform: translateY(-4px) !important; 
+}
+
+/* 確保 SVG 圖片也能同步變色 */
+.icon-link:hover svg path {
+    fill: #e69c00 !important; 
+}
+
+/* --- 聯絡方式文字與圖示排版 --- */
+.contact-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* 讓文字與圖示整體在卡片中絕對置中 */
+    gap: 0.8rem;             /* 文字與右側圖示群之間的距離 */
+    margin-top: 1.5rem;      /* 與上方「譯者・諮詢師」的距離 */
+}
+
+.contact-label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #2c3e50;          /* 深灰藍色，與您的整體色調呼應 */
+    letter-spacing: 1px;
+}
+
+.social-icons {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;             /* 兩個圖示之間的距離 */
+}
+
 /* 手機版與平板設定 */
 @media (max-width: 992px) {
     .navbar { padding: 1rem 5%; }
