@@ -383,6 +383,7 @@ body.dark-theme .dropdown-btn:hover { background: var(--primary); color: var(--b
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center; /* 新增：讓標題、內文與按鈕組在區塊內水平置中 */
 }
 
 /* --- 主標題全局排版設定 --- */
@@ -421,7 +422,12 @@ body.dark-theme .dropdown-btn:hover { background: var(--primary); color: var(--b
     text-justify: inter-ideograph; 
 }
 
-.cta-group { display: flex; gap: 1.5rem; }
+.cta-group { 
+    display: flex; 
+    gap: 1.5rem; 
+    justify-content: center; /* 新增：讓按鈕組在水平方向置中 */
+    width: 100%;             /* 確保容器佔滿寬度以利置中計算 */
+}
 .btn { 
     padding: 2px 0 0 0; 
     width: 210px; 
