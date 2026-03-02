@@ -614,28 +614,36 @@ body.dark-theme .skill-item:hover {
     fill: #e69c00 !important; 
 }
 
-/* --- 聯絡方式文字與圖示排版 (更新版) --- */
+/* --- 聯絡方式文字與圖示排版 (絕對對齊版) --- */
 .contact-wrapper {
     display: flex;
     align-items: center;
     justify-content: center; 
-    gap: 1rem;               /* 稍微拉開一點文字與圖示的距離，比例更大氣 */
+    gap: 0.8rem;             
     margin-top: 1.5rem;      
 }
 
 .contact-label {
-    font-size: 1.15rem;      /* ⬆️ 增大字體 (從原本的 0.95rem 放大) */
+    font-size: 1.15rem;      
     font-weight: 600;
     color: #2c3e50;          
     letter-spacing: 1px;
-    line-height: 1;          /* 消除中文字體自帶的隱形上下行高 */
-    transform: translateY(2px); /* ⬇️ 關鍵微調：將文字輕微往下推，強制與圖示視覺對齊 */
+    line-height: 1;          
+    /* ⬆️ 關鍵修正：改為「負數(-3px)」，將文字往上拉提，完美對準圖示中心 */
+    transform: translateY(-3px); 
 }
 
 .social-icons {
     display: flex;
     align-items: center;
     gap: 1.2rem;             
+}
+
+/* 確保圖示本身的容器絕對置中，不受預設行高干擾 */
+.social-icons .icon-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* 手機版與平板設定 */
