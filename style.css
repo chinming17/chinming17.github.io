@@ -632,7 +632,7 @@ body.dark-theme .skill-item:hover {
     margin: 0 !important;
     
     /*關鍵修正：改成正數，將文字往下推*/
-    transform: translateY(5px) !important; 
+    transform: translateY(7px) !important; 
 }
 
 .social-icons {
