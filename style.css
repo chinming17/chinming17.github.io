@@ -624,15 +624,15 @@ body.dark-theme .skill-item:hover {
 }
 
 .contact-label {
-    font-size: 1.15rem !important;      
+    font-size: 1.15rem !important;
     font-weight: 600 !important;
-    color: #2c3e50 !important;          
+    color: #2c3e50 !important;
     letter-spacing: 1px !important;
-    line-height: 1 !important;          
+    line-height: 1 !important;
     margin: 0 !important;
     
-    /* 🚀 終極殺手鐧：無視任何預設值，強制將文字往上拉提 4px */
-    transform: translateY(-4px) !important; 
+    /*關鍵修正：改成正數，將文字往下推*/
+    transform: translateY(3px) !important; 
 }
 
 .social-icons {
