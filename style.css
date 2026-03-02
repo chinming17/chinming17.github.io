@@ -614,10 +614,10 @@ body.dark-theme .skill-item:hover {
     fill: #e69c00 !important; 
 }
 
-/* --- 聯絡方式文字與圖示排版 (絕對對齊版) --- */
+/* --- 聯絡方式文字與圖示排版 (終極自然對齊版) --- */
 .contact-wrapper {
     display: flex;
-    align-items: center;
+    align-items: center;     /* 讓內部元素在垂直方向絕對置中 */
     justify-content: center; 
     gap: 0.8rem;             
     margin-top: 1.5rem;      
@@ -628,22 +628,28 @@ body.dark-theme .skill-item:hover {
     font-weight: 600;
     color: #2c3e50;          
     letter-spacing: 1px;
-    line-height: 1;          
-    /* ⬆️ 關鍵修正：改為「負數(-3px)」，將文字往上拉提，完美對準圖示中心 */
-    transform: translateY(-3px); 
+    line-height: 1;          /* 壓縮文字自帶的隱形行高 */
+    transform: none !important; /* ⛔️ 刪除之前的所有強制上下位移 */
+    margin: 0;
 }
 
 .social-icons {
     display: flex;
-    align-items: center;
+    align-items: center;     /* 確保兩個圖示群組本身也是垂直置中 */
     gap: 1.2rem;             
 }
 
-/* 確保圖示本身的容器絕對置中，不受預設行高干擾 */
 .social-icons .icon-link {
     display: flex;
     align-items: center;
     justify-content: center;
+    line-height: 1;          /* 抹除超連結 <a> 標籤的預設行高 */
+}
+
+/* 🌟 關鍵修正：徹底消除 FontAwesome 圖示底部的隱形基線(Baseline)留白 */
+.social-icons .icon-link i {
+    display: block; 
+    line-height: 1;
 }
 
 /* 手機版與平板設定 */
