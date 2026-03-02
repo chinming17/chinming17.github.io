@@ -119,18 +119,25 @@ body::before {
 }
 
 .navbar.shrunk {
-    width: 130px; 
-    max-width: 130px; 
-    /* ⬇️修改：將左右 padding 設為 0，把置中任務完全交給 Flexbox */
-    padding: 0.6rem 0; 
-    
-    left: calc(100% - 20px);
-    transform: translateX(-100%);
-    background: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-    
-    /* ⬇️新增：強制覆蓋原本的左右撐開，讓按鈕群組在膠囊內絕對置中 */
+    width: 130px !important; 
+    max-width: 130px !important; 
+    padding: 0.6rem 0 !important; 
     justify-content: center !important; 
+}
+
+/* 確保 Logo 在縮小時徹底消失，不殘留任何隱形寬度將按鈕擠偏 */
+.navbar.shrunk .logo {
+    display: none !important;
+}
+
+/* 強制將按鈕群組在膠囊內絕對置中，並微調兩個按鈕的間距 */
+.navbar.shrunk .nav-controls {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    gap: 0.6rem !important; 
 }
 
 .navbar .logo { 
@@ -655,11 +662,32 @@ body.dark-theme .skill-item:hover {
     .navbar { padding: 1rem 5%; }
     .hero-container { flex-direction: column; text-align: center; gap: 3rem; padding-top: 120px; }
     
-    /* --- 平板端標題排版：精準控制三行距離 --- */
+   /* --- 手機/平板端標題：鎖定最大寬度比例 --- */
     .main-headline { 
-        font-size: 2.2rem; 
-        width: 95%;
-        margin: 0 auto 1.5rem;
+        font-size: 2.2rem !important; 
+        width: 100% !important;
+        /* 🌟 關鍵：給定一個絕對上限，讓它達到這個寬度後就不再互相拉遠 */
+        max-width: 340px !important; 
+        margin: 0 auto 1.5rem !important;
+        display: flex !important; 
+        flex-direction: column !important; 
+        gap: 0px !important; 
+    }
+    
+    .main-headline br { display: none !important; }
+
+    .main-headline * {
+        display: block !important;
+        line-height: 1.0 !important; 
+        margin: 0 !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        width: 100% !important;
+    }
+
+    /* 將百分比縮進改為絕對像素，確保階梯形狀鎖死不變形 */
+    .main-headline .line-1 { padding-left: 15px !important; }
+    .main-headline .line-3 { padding-right: 15px !important; }
         
         /* 啟用 Flex 排版來絕對控制子元素的距離 */
         display: flex; 
